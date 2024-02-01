@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .profile {
+            max-width: 400px;
+            margin: auto;
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: grey;
+            margin: auto;
+        }
+        input[type="text"], button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="profile">
+    <div class="avatar"></div>
+
+    <input type="text" placeholder="Name" disabled />
+    <input type="text" placeholder="Surname" disabled />
+    <input type="text" placeholder="email" disabled />
+    <input type="text" placeholder="Login" disabled />
+
+    <!-- Password field can be added similarly -->
+
+    <button>Change password</button>
+    <button>Delete account</button>
+</div>
+
+</body>
+</html>

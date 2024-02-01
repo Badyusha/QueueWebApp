@@ -1,4 +1,4 @@
-package com.QueueWebApp.database;
+package com.QueueWebApp.dal.database;
 
 import java.sql.*;
 

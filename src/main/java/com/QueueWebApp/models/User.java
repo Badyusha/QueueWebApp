@@ -1,18 +1,23 @@
 package com.QueueWebApp.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
+import jakarta.persistence.*;
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
 
-    private String fullName, login, password;
+    @Column(name = "fullName", columnDefinition = "text")
+    private String fullName;
+
+    @Column(name = "login", columnDefinition = "text")
+    private String login;
+
+    @Column(name = "password", columnDefinition = "text")
+    private String password;
 
     public User() {
     }

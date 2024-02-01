@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up to App</title>
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: black;
+            text-align: center;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: green;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .container {
+            border-radius: 5px;
+            background-color: white;
+            padding: 20px;
+            width: 300px;
+            margin: auto;
+            margin-top: 50px;
+        }
+        .error-message {
+            color: red;
+            font-size: 12px
+        }
+        .sign-in {
+            text-align: center;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Sign up to App</h1>
+    <form method="post">
+        <label for="fullName">Full name</label>
+        <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Enter your first and last name"
+                th:value="${fullName}"
+        />
+        <div th:if="${fullNameError != null}" th:text="${fullNameError}" class="error-message"/>
+        <label for="login">Username</label>
+        <input
+                type="text"
+                id="login"
+                name="login"
+                placeholder="Enter your username"
+                th:value="${login}"
+        />
+        <div th:if="${loginError != null}" th:text="${loginError}" class="error-message"/>
+        <label for="password">Password</label>
+        <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+        />
+        <div th:if="${passwordError != null}" th:text="${passwordError}" class="error-message"/>
+        <label for="repeatPassword">Repeat Password</label>
+        <input
+                type="password"
+                id="repeatPassword"
+                name="repeatPassword"
+                placeholder="Enter your password again"
+        />
+        <div th:if="${passwordMatch != null}" th:text="${passwordMatch}" class="error-message"/>
+        <input type="submit" value="Register" />
+    </form>
+    <div class="sign-in">
+        <a href="#">Sign In</a>
+    </div>
+</div>
+</body>
+</html>

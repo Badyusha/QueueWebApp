@@ -25,7 +25,7 @@ public class SignInController {
 
 	@PostMapping("/SignIn")
 	public String ProcessSignInForm(@RequestParam String login,	@RequestParam String password, Model model) {
-		if(signInService.SuccessfulAuthorization(login, password)) {
+		if(!signInService.SuccessfulAuthorization(login, password)) {
 			model.addAttribute("error", "Incorrect username or password");
 			return "IncorrectAuthorization";
 		}

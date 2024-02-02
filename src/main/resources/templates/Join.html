@@ -36,17 +36,35 @@
 </head>
 <body>
 
-<form action="/action_page.php">
+
+
+<form method="post">
     <h1>Join</h1>
 
     <label for="subject">Subject</label><br>
-    <input type="text" id="subject" name="subject" value="САМПС" disabled><br><br>
+    <select id="subject" name="subject">
+        <option value="option1">ООПиП</option>
+        <option value="option2">САИПиС 2</option>
+        <option value="option3">БД</option>
+    </select><br><br>
+
+
+
 
     <label for="subgroup">Subgroup</label><br>
-    <input type="text" id="subgroup" name="subgroup" value="1" disabled><br><br>
+    <select id="subgroup" name="subgroup">
+        <option value="option1">1 подгруппа</option>
+        <option value="option1">2 подгруппа</option>
+        <option value="option1">Общая</option>
+    </select><br><br>
+
 
     <label for="date">Date</label><br>
-    <input type="date" id="date" name="date" value="01/09" disabled><br><br>
+    <input
+            type="date"
+            id="date"
+            name="date"
+    /><br><br>
 
     <button type = "submit"id = "join">Join </button>
     <button type = "button"id = "cancel">Cancel </button>

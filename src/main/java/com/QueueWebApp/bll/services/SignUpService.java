@@ -33,7 +33,7 @@ public class SignUpService {
 		if(password.length() > 30){
 			arr[2] = "Password should be less than 30 symbols";
 		}
-		if(databaseService.IsLoginInDb(login) != null) {
+		if(databaseService.GetUserByLogin(login) != null) {
 			arr[1] = "Login already in use, enter another";
 		}
 		if(!password.equals(repeatPassword)) {

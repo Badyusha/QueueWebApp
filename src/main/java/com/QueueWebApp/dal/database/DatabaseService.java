@@ -33,16 +33,16 @@ public class DatabaseService {
         return null;
     }
 
-    public boolean UserExists(String login, String password) {
+    public User UserExists(String login, String password) {
         User user = IsLoginInDb(login);
 
         if(user == null) {
-            return false;
+            return null;
         }
 
         byte[] passwordSalt = user.getPasswordSalt();
         String hashedPassword = EncryptionService.hashString(password, passwordSalt);
 
-        return user.getPassword().equals(hashedPassword);
+        return user.getPassword().equals(hashedPassword) ? user : null;
     }
 }

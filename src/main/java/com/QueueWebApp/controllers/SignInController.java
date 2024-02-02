@@ -1,6 +1,8 @@
 package com.QueueWebApp.controllers;
 
 import com.QueueWebApp.bll.services.SignInService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,12 +26,14 @@ public class SignInController {
 	}
 
 	@PostMapping("/SignIn")
-	public String ProcessSignInForm(@RequestParam String login,	@RequestParam String password, Model model) {
-		if(signInService.SuccessfulAuthorization(login, password)) {
+	public String ProcessSignInForm(@RequestParam String login,	@RequestParam String password,
+									HttpServletRequest request, Model model)
+	{
+		if(!signInService.SuccessfulAuthorization(login, password, request)) {
 			model.addAttribute("error", "Incorrect username or password");
 			return "IncorrectAuthorization";
 		}
-		return "Home";
+		return "redirect:/Home";
 	}
 }
 

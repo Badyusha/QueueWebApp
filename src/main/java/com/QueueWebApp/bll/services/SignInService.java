@@ -8,6 +8,8 @@ public class SignInService {
 	public static int SuccessfulAuthorization(String login, String password){
 		String encryptedPassword = password;
 
+
+
 //		try (Statement statement = Database.connection.createStatement();
 //			 ResultSet resultSet = statement.executeQuery("SELECT count(*) AS UsersCount " +
 //					 "FROM UsersTable " +

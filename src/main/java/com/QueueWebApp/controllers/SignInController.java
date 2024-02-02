@@ -18,14 +18,17 @@ public class SignInController {
 
 	@PostMapping("/SignIn")
 	public String ProcessSignInForm(@RequestParam String login,	@RequestParam String password, Model model) {
-		if(SignInService.SuccessfulAuthorization(login, password) == SignInService.NoSuchUser){
+		int authorizationResult = SignInService.SuccessfulAuthorization(login, password);
+
+		if(authorizationResult == SignInService.NoSuchUser){
 			model.addAttribute("error", "Incorrect username or password");
 			return "IncorrectAuthorization";
 		}
-		if(SignInService.SuccessfulAuthorization(login, password) == SignInService.BadRequestError){
+		if(authorizationResult == SignInService.BadRequestError){
 			model.addAttribute("error", "Failed to make database request");
 			return "IncorrectAuthorization";
 		}
+
 		return "Home";
 	}
 }

@@ -1,5 +1,6 @@
 package com.QueueWebApp.controllers;
 
+import com.QueueWebApp.bll.services.LoginService;
 import com.QueueWebApp.models.User;
 import com.QueueWebApp.repo.UserRepository;
 import jakarta.persistence.EntityManagerFactory;
@@ -17,8 +18,13 @@ import java.util.List;
 @Controller()
 public class SignUpController {
 
+    private final LoginService loginService;
+
     @Autowired
-    UserRepository userRepository;
+    public SignUpController(LoginService loginService) {
+        this.loginService = loginService;
+    }
+
     @Autowired
     private EntityManagerFactory entityManagerFactory;
 
@@ -36,11 +42,11 @@ public class SignUpController {
             Model model) {
 
 
-        String[] dataErrorArray = CorrectData(fullName, login, password);
+        String[] dataErrorArray = CorrectData(fullName, login, password, repeatPassword);
 
 
 
-        if(dataErrorArray[0] != null || dataErrorArray[1] != null) {
+        if(dataErrorArray[0] != null || dataErrorArray[1] != null || dataErrorArray[2] != null) {
             model.addAttribute("fullName", fullName);
             model.addAttribute("login", login);
 
@@ -48,17 +54,9 @@ public class SignUpController {
             model.addAttribute("loginError", dataErrorArray[1]);
             model.addAttribute("passwordError", dataErrorArray[2]);
             return "ErrorSignUp";
-        } else if (!password.equals(repeatPassword)) {
-            model.addAttribute("fullName", fullName);
-            model.addAttribute("login", login);
-
-            model.addAttribute("passwordMatch", "password doesn't match");
-            return "ErrorSignUp";
-        } else {
+        } else  {
             try {
-
-                User user = new User(fullName, login, password);
-                userRepository.save(user);
+                loginService.RegisterUser(fullName, login, password);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -68,7 +66,7 @@ public class SignUpController {
     }
 
 
-    public String[] CorrectData(String fullName, String login, String password) {
+    public String[] CorrectData(String fullName, String login, String password, String repeatPassword) {
         String[] arr = {null, null, null};
         String[] words = fullName.split(" ");
 
@@ -89,6 +87,13 @@ public class SignUpController {
         }
         if(password.length() > 30){
             arr[2] = "Password should be less than 30 symbols";
+        }
+
+        if(loginService.IsUserInDb(login)) {
+            arr[1] = "Login already in use, enter another";
+        }
+        if(!password.equals(repeatPassword)) {
+            arr[2] = "Password doesn't match";
         }
 
         return arr;

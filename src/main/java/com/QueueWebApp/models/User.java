@@ -16,16 +16,33 @@ public class User {
     @Column(name = "login", columnDefinition = "text")
     private String login;
 
+
     @Column(name = "password", columnDefinition = "text")
     private String password;
+
+    @Column(name = "passwordSalt")
+    private byte[] passwordSalt;
 
     public User() {
     }
 
-    public User(String fullName, String login, String password) {
+    public User(String fullName, String login, String password, byte[] passwordSalt) {
         this.fullName = fullName;
         this.login = login;
         this.password = password;
+        this.passwordSalt = passwordSalt;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public byte[] getPasswordSalt() {
+        return passwordSalt;
+    }
+
+    public void setPasswordSalt(byte[] passwordSalt) {
+        this.passwordSalt = passwordSalt;
     }
 
     public String getFullName() {

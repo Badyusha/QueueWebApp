@@ -1,5 +1,6 @@
 package com.QueueWebApp.controllers;
 
+import com.QueueWebApp.bll.services.SessionService;
 import com.QueueWebApp.models.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -13,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProfileController {
 	@GetMapping("/Profile")
 	public String SignIn(HttpServletRequest request, Model model) {
-		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
+		User user = SessionService.UserIsInSession(request);
 
 		if(user == null) {
 			return "redirect:/SignIn";

@@ -1,8 +1,9 @@
 package com.QueueWebApp.controllers;
 
+import com.QueueWebApp.bll.services.SessionService;
 import com.QueueWebApp.bll.services.SignInService;
+import com.QueueWebApp.models.User;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +22,11 @@ public class SignInController {
 	}
 
 	@GetMapping("/SignIn")
-	public String SignIn(Model model) {
+	public String SignIn(HttpServletRequest request, Model model) {
+		User user = SessionService.UserIsInSession(request);
+		if(user != null) {
+			return "redirect:/Home";
+		}
 		return "SignIn";
 	}
 

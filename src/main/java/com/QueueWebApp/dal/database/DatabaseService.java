@@ -28,7 +28,7 @@ public class DatabaseService {
         userRepository.save(new User(fullName, login, passwordHash, passwordSalt));
     }
 
-    public User GetUserByLogin(String login) {
+    public User IsLoginInDb(String login) {
         Iterable<User> users = userRepository.findAll();
 
         for (User user : users) {
@@ -39,17 +39,17 @@ public class DatabaseService {
         return null;
     }
 
-    public boolean UserExists(String login, String password) {
-        User user = GetUserByLogin(login);
+    public User UserExists(String login, String password) {
+        User user = IsLoginInDb(login);
 
         if(user == null) {
-            return false;
+            return null;
         }
 
         byte[] passwordSalt = user.getPasswordSalt();
         String hashedPassword = EncryptionService.hashString(password, passwordSalt);
 
-        return user.getPassword().equals(hashedPassword);
+        return user.getPassword().equals(hashedPassword) ? user : null;
     }
 
 

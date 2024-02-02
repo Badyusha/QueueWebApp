@@ -1,6 +1,7 @@
 package com.QueueWebApp.controllers;
 
 import com.QueueWebApp.bll.services.SignInService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SignInController {
+	private final SignInService	signInService;
+
+	@Autowired
+	public SignInController(SignInService signInService) {
+		this.signInService = signInService;
+	}
 
 	@GetMapping("/SignIn")
 	public String SignIn(Model model) {
@@ -18,17 +25,10 @@ public class SignInController {
 
 	@PostMapping("/SignIn")
 	public String ProcessSignInForm(@RequestParam String login,	@RequestParam String password, Model model) {
-		int authorizationResult = SignInService.SuccessfulAuthorization(login, password);
-
-		if(authorizationResult == SignInService.NoSuchUser){
+		if(signInService.SuccessfulAuthorization(login, password)) {
 			model.addAttribute("error", "Incorrect username or password");
 			return "IncorrectAuthorization";
 		}
-		if(authorizationResult == SignInService.BadRequestError){
-			model.addAttribute("error", "Failed to make database request");
-			return "IncorrectAuthorization";
-		}
-
 		return "Home";
 	}
 }

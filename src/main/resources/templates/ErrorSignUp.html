@@ -85,7 +85,6 @@
                 name="password"
                 placeholder="Enter your password"
         />
-        <div th:if="${passwordError != null}" th:text="${passwordError}" class="error-message"/>
         <label for="repeatPassword">Repeat Password</label>
         <input
                 type="password"
@@ -93,6 +92,7 @@
                 name="repeatPassword"
                 placeholder="Enter your password again"
         />
+        <div th:if="${passwordError != null}" th:text="${passwordError}" class="error-message"/>
         <div th:if="${passwordMatch != null}" th:text="${passwordMatch}" class="error-message"/>
         <input type="submit" value="Register" />
     </form>

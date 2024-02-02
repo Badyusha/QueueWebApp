@@ -13,19 +13,35 @@ public class User {
     @Column(name = "fullName", columnDefinition = "text")
     private String fullName;
 
-    @Column(name = "login", columnDefinition = "text")
+    @Column(name = "login", columnDefinition = "70")
     private String login;
+
 
     @Column(name = "password", columnDefinition = "text")
     private String password;
 
-    public User() {
-    }
+    @Column(name = "passwordSalt")
+    private byte[] passwordSalt;
 
-    public User(String fullName, String login, String password) {
+    public User() { }
+
+    public User(String fullName, String login, String password, byte[] passwordSalt) {
         this.fullName = fullName;
         this.login = login;
         this.password = password;
+        this.passwordSalt = passwordSalt;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public byte[] getPasswordSalt() {
+        return passwordSalt;
+    }
+
+    public void setPasswordSalt(byte[] passwordSalt) {
+        this.passwordSalt = passwordSalt;
     }
 
     public String getFullName() {

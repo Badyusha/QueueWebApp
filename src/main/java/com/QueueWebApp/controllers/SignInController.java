@@ -27,16 +27,15 @@ public class SignInController {
 		if(user != null) {
 			return "redirect:/Home";
 		}
-		return "SignIn";
+		return "forward:/WEB-INF/views/SignIn.jsp";
 	}
 
 	@PostMapping("/SignIn")
 	public String ProcessSignInForm(@RequestParam String login,	@RequestParam String password,
-									HttpServletRequest request, Model model)
+									HttpServletRequest request)
 	{
 		if(!signInService.SuccessfulAuthorization(login, password, request)) {
-			model.addAttribute("error", "Incorrect username or password");
-			return "IncorrectAuthorization";
+			return "forward:/WEB-INF/views/SignIn.jsp";
 		}
 		return "redirect:/Home";
 	}

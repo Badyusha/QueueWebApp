@@ -13,20 +13,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ProfileController {
 	@GetMapping("/Profile")
-	public String SignIn(HttpServletRequest request, Model model) {
+	public String SignIn(HttpServletRequest request) {
 		User user = SessionService.UserIsInSession(request);
 
 		if(user == null) {
 			return "redirect:/SignIn";
 		}
-
-		model.addAttribute("name", user.getFullName());
-		model.addAttribute("login", user.getLogin());
-		return "Profile";
+		return "forward:/WEB-INF/views/Profile.jsp";
 	}
 
 	@PostMapping("/Profile")
-	public String ProcessSignInForm(@RequestParam String login, @RequestParam String password, Model model) {
+	public String ProcessSignInForm(@RequestParam String action)
+	{
+		if (action.equals("changePassword")) {
+			return "redirect:/ChangePassword";
+		}
+		if (action.equals("deleteAccount")) {
+			return "redirect:/deleteAccount";
+		}
 		return "redirect:/Home";
 	}
 }

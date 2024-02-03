@@ -1,7 +1,11 @@
 package com.QueueWebApp.controllers;
 
 import com.QueueWebApp.bll.services.SignUpService;
+import com.QueueWebApp.models.User;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.jms.JmsProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +23,7 @@ public class SignUpController {
 
     @GetMapping("/SignUp")
     public String SignUp(Model model) {
-        return "SignUp";
+        return "forward:/WEB-INF/views/SignUp.jsp";
     }
 
     @PostMapping("/SignUp")
@@ -28,25 +32,29 @@ public class SignUpController {
             @RequestParam  String login,
             @RequestParam  String password,
             @RequestParam  String repeatPassword,
-            Model model) {
-
+            HttpServletRequest request)
+    {
         String[] dataErrorArray = signUpService.CorrectData(fullName, login, password, repeatPassword);
 
         if(dataErrorArray[0] != null || dataErrorArray[1] != null || dataErrorArray[2] != null) {
-            model.addAttribute("fullName", fullName);
-            model.addAttribute("login", login);
+            HttpSession session = request.getSession();
+            session.setAttribute("fullName", fullName);
+            session.setAttribute("login", login);
+            session.setAttribute("fullNameError", dataErrorArray[0]);
+            session.setAttribute("loginError", dataErrorArray[1]);
+            session.setAttribute("passwordError", dataErrorArray[2]);
 
-            model.addAttribute("fullNameError", dataErrorArray[0]);
-            model.addAttribute("loginError", dataErrorArray[1]);
-            model.addAttribute("passwordError", dataErrorArray[2]);
-            return "ErrorSignUp";
+            return "forward:/WEB-INF/views/SignUp.jsp";
         }
+
         try {
-            signUpService.RegisterUser(fullName, login, password);
+            User user = signUpService.RegisterUser(fullName, login, password);
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
-        return "SignUp";
+        return "redirect:/Home";
     }
 }

@@ -17,8 +17,11 @@ public class DatabaseService {
         this.userRepository = userRepository;
     }
 
-    public void AddUserToDb(String fullName, String login, String passwordHash, byte[] passwordSalt) {
-        userRepository.save(new User(fullName, login, passwordHash, passwordSalt));
+    public User AddUserToDb(String fullName, String login, String passwordHash, byte[] passwordSalt) {
+        return userRepository.save(new User(fullName, login, passwordHash, passwordSalt));
+    }
+    public User UpdateUserInDb(User user) {
+        return userRepository.save(new User(user.getId(), user.getFullName(), user.getLogin(), user.getPassword(), user.getPasswordSalt()));
     }
 
     public User IsLoginInDb(String login) {

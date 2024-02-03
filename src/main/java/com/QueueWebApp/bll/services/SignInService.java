@@ -22,9 +22,10 @@ public class SignInService {
 		if(user == null){
 			return false;
 		}
-		HttpSession session = request.getSession();
 
+		HttpSession session = request.getSession();
 		session.setAttribute("user", user);
+
 		return true;
 	}
 

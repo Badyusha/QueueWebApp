@@ -42,7 +42,10 @@
             <version>8.0.33</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.vaadin</groupId>

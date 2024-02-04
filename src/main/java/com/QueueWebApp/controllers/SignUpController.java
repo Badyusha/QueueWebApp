@@ -1,5 +1,6 @@
 package com.QueueWebApp.controllers;
 
+import com.QueueWebApp.bll.services.SessionService;
 import com.QueueWebApp.bll.services.SignUpService;
 import com.QueueWebApp.models.User;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,7 +23,11 @@ public class SignUpController {
     }
 
     @GetMapping("/SignUp")
-    public String SignUp(Model model) {
+    public String SignUp(HttpServletRequest request) {
+        User user = SessionService.UserIsInSession(request);
+        if(user != null) {
+            return "redirect:/Home";
+        }
         return "forward:/WEB-INF/views/SignUp.jsp";
     }
 

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SignInService {
-
 	private final DatabaseService databaseService;
 
 	@Autowired

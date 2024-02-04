@@ -37,7 +37,6 @@ public class DatabaseService {
 
     public User UserExists(String login, String password) {
         User user = IsLoginInDb(login);
-
         if(user == null) {
             return null;
         }
@@ -46,5 +45,15 @@ public class DatabaseService {
         String hashedPassword = EncryptionService.hashString(password, passwordSalt);
 
         return user.getPassword().equals(hashedPassword) ? user : null;
+    }
+
+    public boolean deleteUser(User user) {
+        try {
+            userRepository.delete(user);
+        } catch(Exception e){
+            e.getStackTrace();
+            return false;
+        }
+        return true;
     }
 }

@@ -5,7 +5,7 @@
   Time: 23:25
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" import="com.QueueWebApp.models.User"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -77,7 +77,14 @@
                 name="password"
                 placeholder="Password"
         />
-        <div th:if="${error != null}" th:text="${error}" class="error-message"></div>
+
+        <div class="error-message">
+                <%
+                    if(((String)session.getAttribute("SignInError")) != null){
+                        out.println("Incorrect username or password");
+                    }
+                %>
+        </div>
 
         <input type="submit" value="Sign in" />
     </form>

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.swing.*;
+
 
 @Controller
 public class SignInController {
@@ -31,10 +33,11 @@ public class SignInController {
 	}
 
 	@PostMapping("/SignIn")
-	public String ProcessSignInForm(@RequestParam String login,	@RequestParam String password,
+	public String ProcessSignInForm(@RequestParam String login, @RequestParam String password,
 									HttpServletRequest request)
 	{
 		if(!signInService.SuccessfulAuthorization(login, password, request)) {
+			request.getSession().setAttribute("SignInError", "Incorrect username or password");
 			return "forward:/WEB-INF/views/SignIn.jsp";
 		}
 		return "redirect:/Home";

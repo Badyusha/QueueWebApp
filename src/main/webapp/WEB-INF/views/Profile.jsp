@@ -64,10 +64,28 @@
             %>
         </div>
 
-        <form method="post" th:action="@{/Profile}" th:object="${user}" th:method="post">
+        <form method="post" th:action="@{/Profile}" th:method="post">
             <button type="submit" name="action" value="changePassword">Change password</button>
-            <button type="submit" name="action" value="deleteAccount">Delete account</button>
+            <button type="button" onclick="showConfirmation()">Delete account</button>
         </form>
+
+        <!-- Confirmation form -->
+        <div id="confirmationModal" style="display:none">
+            <h2>Are you sure you wanna delete your account?</h2>
+            <form method="post" th:action="@{/Profile}" th:method="post">
+                <button type="submit" name="action" value="confirmDelete">Yeap</button>
+                <button type="button" onclick="hideConfirmation()">Cancel</button>
+            </form>
+        </div>
+
+        <script>
+            function showConfirmation() {
+                document.getElementById("confirmationModal").style.display = "block";
+            }
+            function hideConfirmation() {
+                document.getElementById("confirmationModal").style.display = "none";
+            }
+        </script>
 
     </div>
 

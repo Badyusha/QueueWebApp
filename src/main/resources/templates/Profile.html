@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,22 +19,30 @@
             background-color: grey;
             margin: auto;
         }
-        input[type="text"], button {
-            width: calc(100% - 20px);
+        .user_info, button {
+            /*width: calc(100% - 20px);*/
             padding: 10px;
             margin-bottom: 20px;
+        }
+        .home {
+            text-align: left;
+            margin-top: 20px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
 <div class="profile">
+    <div class="home">
+        <a href="/Home">Home</a>
+    </div>
+
     <div class="avatar"></div>
 
-    <input type="text" placeholder="Name" disabled />
-    <input type="text" placeholder="Surname" disabled />
-    <input type="text" placeholder="email" disabled />
-    <input type="text" placeholder="Login" disabled />
+    <div th:if="${name != null}" th:text="${name}" class="user_info"></div>
+    <div th:if="${login != null}" th:text="${login}" class="user_info"></div>
+
 
     <!-- Password field can be added similarly -->
 

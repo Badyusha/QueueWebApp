@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
 	@GetMapping("/Home")
-	public String SignIn(Model model) {
+	public String Home(Model model) {
 		return "Home";
 	}
 
 	@PostMapping("/Home")
-	public String ProcessSignInForm(@RequestParam String login, @RequestParam String password, Model model) {
+	public String Home(@RequestParam String login, @RequestParam String password, Model model) {
 		return "";
 	}
 }

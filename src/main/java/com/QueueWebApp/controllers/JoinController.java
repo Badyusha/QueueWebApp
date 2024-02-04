@@ -1,6 +1,7 @@
 package com.QueueWebApp.controllers;
 
 import com.QueueWebApp.bll.services.JoinService;
+import com.QueueWebApp.bll.services.SessionService;
 import com.QueueWebApp.bll.services.SignUpService;
 import com.QueueWebApp.models.User;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,16 +24,41 @@ public class JoinController {
 	public JoinController(JoinService joinService) {
 		this.joinService = joinService;
 	}
+
 	@GetMapping("/Join")
-	public String Join(Model model) {
+	public String join(Model model) {
+		model.addAttribute("subjects", new String[]{"ООПиП", "СМиФ", "БД"});
+		model.addAttribute("subgroups", new String[]{"1 подгруппа", "2 подгруппа", "Общая"});
 		return "Join";
 	}
 
 	@PostMapping("/Join")
-	public String Join(HttpServletRequest request, @RequestParam String subjectName, @RequestParam String subgroup, @RequestParam LocalDate date, Model model) {
-		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
-		joinService.AddUserToQueue(user.getId(), subjectName, subgroup, date);
+	public String processForm(HttpServletRequest request,
+							  @RequestParam String subject,
+							  @RequestParam String subgroup,
+							  @RequestParam String date,
+							  @RequestParam String action,
+							  Model model) {
+		User user = SessionService.UserIsInSession(request);
+
+		if (user == null) {
+			return "redirect:/SignIn";
+		}
+
+
+		if ("join".equals(action)) {
+			try {
+				LocalDate parsedDate = LocalDate.parse(date);
+				joinService.AddUserToQueue(user.getId(), subject, subgroup, parsedDate);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+
 		return "redirect:/Home";
 	}
+
+
 }
+
+

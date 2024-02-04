@@ -43,32 +43,22 @@
 
     <label for="subject">Subject</label><br>
     <select id="subject" name="subject">
-        <option value="option1">ООПиП</option>
-        <option value="option2">САИПиС 2</option>
-        <option value="option3">БД</option>
+        <option th:each="subject : ${subjects}" th:value="${subject}" th:text="${subject}"></option>
     </select><br><br>
-
-
-
 
     <label for="subgroup">Subgroup</label><br>
     <select id="subgroup" name="subgroup">
-        <option value="option1">1 подгруппа</option>
-        <option value="option1">2 подгруппа</option>
-        <option value="option1">Общая</option>
+        <option th:each="subgroup : ${subgroups}" th:value="${subgroup}" th:text="${subgroup}"></option>
     </select><br><br>
 
-
     <label for="date">Date</label><br>
-    <input
-            type="date"
-            id="date"
-            name="date"
-    /><br><br>
+    <input type="date" id="date" name="date"/><br><br>
 
-    <button type = "submit"id = "join">Join </button>
-    <button type = "button"id = "cancel">Cancel </button>
+    <button type="submit" id="join" name="action" value="join">Join</button>
+    <button type="submit" id="cancel" name="action" value="cancel">Cancel</button>
 </form>
+
+
 
 </body>
 </html>

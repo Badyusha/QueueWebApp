@@ -1,7 +1,11 @@
 package com.QueueWebApp.dal.database;
 
 import com.QueueWebApp.bll.services.EncryptionService;
+import com.QueueWebApp.models.Queue;
+import com.QueueWebApp.models.Subject;
 import com.QueueWebApp.models.User;
+import com.QueueWebApp.repo.QueueRepository;
+import com.QueueWebApp.repo.SubjectRepository;
 import com.QueueWebApp.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,12 +15,14 @@ import java.util.List;
 @Service
 public class DatabaseService {
     private final UserRepository userRepository;
-
+    private final SubjectRepository subjectRepository;
+    private final QueueRepository queueRepository;
     @Autowired
-    public DatabaseService(UserRepository userRepository) {
+    public DatabaseService(UserRepository userRepository, SubjectRepository subjectRepository, QueueRepository queueRepository) {
+        this.subjectRepository = subjectRepository;
         this.userRepository = userRepository;
+        this.queueRepository = queueRepository;
     }
-
     public User AddUserToDb(String fullName, String login, String passwordHash, byte[] passwordSalt) {
         return userRepository.save(new User(fullName, login, passwordHash, passwordSalt));
     }
@@ -55,5 +61,23 @@ public class DatabaseService {
             return false;
         }
         return true;
+    }
+
+    public Subject GetSubject(Subject subject) {
+        Iterable<Subject> subjects = subjectRepository.findAll();
+
+        for (Subject item : subjects) {
+            if (item.getSubjectName().equals(subject.getSubjectName())
+                    && item.getSubgroup().equals(subject.getSubgroup())
+                    && item.getDate().equals(subject.getDate())) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public void AddUserToQueue(Long userId, Long subjectId) {
+        Queue queue = new Queue(userRepository.getReferenceById(userId), subjectRepository.getReferenceById(subjectId));
+        queueRepository.save(queue);
     }
 }

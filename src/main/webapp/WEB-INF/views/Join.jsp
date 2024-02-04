@@ -43,21 +43,29 @@
 </head>
 <body>
 
-<form action="/action_page.php">
+
+
+<form method="post">
     <h1>Join</h1>
 
     <label for="subject">Subject</label><br>
-    <input type="text" id="subject" name="subject" value="САМПС" disabled><br><br>
+    <select id="subject" name="subject">
+        <option th:each="subject : ${subjects}" th:value="${subject}" th:text="${subject}"></option>
+    </select><br><br>
 
     <label for="subgroup">Subgroup</label><br>
-    <input type="text" id="subgroup" name="subgroup" value="1" disabled><br><br>
+    <select id="subgroup" name="subgroup">
+        <option th:each="subgroup : ${subgroups}" th:value="${subgroup}" th:text="${subgroup}"></option>
+    </select><br><br>
 
     <label for="date">Date</label><br>
-    <input type="date" id="date" name="date" value="01/09" disabled><br><br>
+    <input type="date" id="date" name="date"/><br><br>
 
-    <button type = "submit"id = "join">Join </button>
-    <button type = "button"id = "cancel">Cancel </button>
+    <button type="submit" id="join" name="action" value="join">Join</button>
+    <button type="submit" id="cancel" name="action" value="cancel">Cancel</button>
 </form>
+
+
 
 </body>
 </html>

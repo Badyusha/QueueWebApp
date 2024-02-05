@@ -8,8 +8,10 @@ import com.QueueWebApp.repo.QueueRepository;
 import com.QueueWebApp.repo.SubjectRepository;
 import com.QueueWebApp.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,6 +19,7 @@ public class DatabaseService {
     private final UserRepository userRepository;
     private final SubjectRepository subjectRepository;
     private final QueueRepository queueRepository;
+
     @Autowired
     public DatabaseService(UserRepository userRepository, SubjectRepository subjectRepository, QueueRepository queueRepository) {
         this.subjectRepository = subjectRepository;
@@ -79,5 +82,21 @@ public class DatabaseService {
     public void AddUserToQueue(Long userId, Long subjectId) {
         Queue queue = new Queue(userRepository.getReferenceById(userId), subjectRepository.getReferenceById(subjectId));
         queueRepository.save(queue);
+    }
+
+    public List<Subject> GetUserSubjects(Long userId) {
+        List<Long> userSubjectsId = this.queueRepository.GetUserSubjectsId(userId);
+
+        List<Subject> userSubjects = new ArrayList<>();
+
+        for(Long subjectId : userSubjectsId) {
+            try {
+                userSubjects.addAll(this.subjectRepository.GetUserSubjects(subjectId));
+            } catch(NullPointerException e){
+                e.getStackTrace();
+                userSubjects = null;
+            }
+        }
+        return userSubjects;
     }
 }

@@ -24,7 +24,7 @@ public class SignInController {
 	}
 
 	@GetMapping("/SignIn")
-	public String SignIn(HttpServletRequest request, Model model) {
+	public String SignIn(HttpServletRequest request) {
 		User user = SessionService.UserIsInSession(request);
 		if(user != null) {
 			return "redirect:/Home";

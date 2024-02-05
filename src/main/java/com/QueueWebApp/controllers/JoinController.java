@@ -14,22 +14,37 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class JoinController {
-
 	private final JoinService joinService;
-
 	@Autowired
 	public JoinController(JoinService joinService) {
 		this.joinService = joinService;
 	}
-
 	@GetMapping("/Join")
-	public String join(Model model) {
-		model.addAttribute("subjects", new String[]{"ООПиП", "СМиФ", "БД"});
-		model.addAttribute("subgroups", new String[]{"1 подгруппа", "2 подгруппа", "Общая"});
-		return "Join";
+	public String join(HttpServletRequest request, Model model) {
+		User user = SessionService.UserIsInSession(request);
+		if(user == null) {
+			return "redirect:/SignIn";
+		}
+
+		List<String> subjectsList = new ArrayList<>();
+		subjectsList.add("ООПиП");
+		subjectsList.add("СМыФ");
+		subjectsList.add("САИПиС");
+
+		List<String> subgroupsList = new ArrayList<>();
+		subgroupsList.add("1");
+		subgroupsList.add("2");
+		subgroupsList.add("Общая");
+
+		request.getSession().setAttribute("subjects", subjectsList);
+		request.getSession().setAttribute("subgroups", subgroupsList);
+
+		return "forward:/WEB-INF/views/Join.jsp";
 	}
 
 	@PostMapping("/Join")
@@ -37,14 +52,12 @@ public class JoinController {
 							  @RequestParam String subject,
 							  @RequestParam String subgroup,
 							  @RequestParam String date,
-							  @RequestParam String action,
-							  Model model) {
+							  @RequestParam String action)
+	{
 		User user = SessionService.UserIsInSession(request);
-
 		if (user == null) {
 			return "redirect:/SignIn";
 		}
-
 
 		if ("join".equals(action)) {
 			try {
@@ -57,8 +70,4 @@ public class JoinController {
 
 		return "redirect:/Home";
 	}
-
-
 }
-
-

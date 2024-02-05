@@ -1,9 +1,16 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<%--
+  Created by IntelliJ IDEA.
+  User: Pablo
+  Date: 03.02.2024
+  Time: 23:25
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" import="com.QueueWebApp.models.User"%>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up to App</title>
+    <title>Error Data</title>
     <style>
         body {
             background-color: white;
@@ -45,58 +52,44 @@
             margin: auto;
             margin-top: 50px;
         }
-        .error-message {
-            color: red;
-            font-size: 12px
-        }
-        .sign-in {
+        .create-account {
             text-align: center;
-            margin-top: 5px;
+            margin-top: 20px;
             font-size: 14px;
+        }
+        .error-message{
+            color: red;
+            font-size: 12px;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>Sign up to App</h1>
+    <h1>Sign in</h1>
     <form method="post">
-        <label for="fullName">Full name</label>
-        <input
-                type="text"
-                id="fullName"
-                name="fullName"
-                placeholder="Enter your first and last name"
-                th:value="${fullName}"
-        />
-        <div th:if="${fullNameError != null}" th:text="${fullNameError}" class="error-message"/>
-        <label for="login">Username</label>
-        <input
-                type="text"
-                id="login"
-                name="login"
-                placeholder="Enter your username"
-                th:value="${login}"
-        />
-        <div th:if="${loginError != null}" th:text="${loginError}" class="error-message"/>
+        <label for="login">Login</label>
+        <input type="text" id="login" name="login" placeholder="Login" />
+
         <label for="password">Password</label>
         <input
                 type="password"
                 id="password"
                 name="password"
-                placeholder="Enter your password"
+                placeholder="Password"
         />
-        <label for="repeatPassword">Repeat Password</label>
-        <input
-                type="password"
-                id="repeatPassword"
-                name="repeatPassword"
-                placeholder="Enter your password again"
-        />
-        <div th:if="${passwordError != null}" th:text="${passwordError}" class="error-message"/>
-        <input type="submit" value="Register" />
+
+        <div class="error-message">
+                <%
+                    if(((String)session.getAttribute("SignInError")) != null){
+                        out.println("Incorrect username or password");
+                    }
+                %>
+        </div>
+
+        <input type="submit" value="Sign in" />
     </form>
-    <div class="sign-in">
-        <a href="/SignIn">Sign In</a>
+    <div class="create-account">
+        <a href="/SignUp">Create an account</a>
     </div>
 </div>
 </body>

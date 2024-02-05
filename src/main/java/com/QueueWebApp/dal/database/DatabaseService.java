@@ -23,9 +23,11 @@ public class DatabaseService {
         this.userRepository = userRepository;
         this.queueRepository = queueRepository;
     }
-
-    public void AddUserToDb(String fullName, String login, String passwordHash, byte[] passwordSalt) {
-        userRepository.save(new User(fullName, login, passwordHash, passwordSalt));
+    public User AddUserToDb(String fullName, String login, String passwordHash, byte[] passwordSalt) {
+        return userRepository.save(new User(fullName, login, passwordHash, passwordSalt));
+    }
+    public User UpdateUserInDb(User user) {
+        return userRepository.save(new User(user.getId(), user.getFullName(), user.getLogin(), user.getPassword(), user.getPasswordSalt()));
     }
 
     public User IsLoginInDb(String login) {
@@ -41,7 +43,6 @@ public class DatabaseService {
 
     public User UserExists(String login, String password) {
         User user = IsLoginInDb(login);
-
         if(user == null) {
             return null;
         }
@@ -52,6 +53,15 @@ public class DatabaseService {
         return user.getPassword().equals(hashedPassword) ? user : null;
     }
 
+    public boolean deleteUser(User user) {
+        try {
+            userRepository.delete(user);
+        } catch(Exception e){
+            e.getStackTrace();
+            return false;
+        }
+        return true;
+    }
 
     public Subject GetSubject(Subject subject) {
         Iterable<Subject> subjects = subjectRepository.findAll();
@@ -65,6 +75,7 @@ public class DatabaseService {
         }
         return null;
     }
+
     public void AddUserToQueue(Long userId, Long subjectId) {
         Queue queue = new Queue(userRepository.getReferenceById(userId), subjectRepository.getReferenceById(subjectId));
         queueRepository.save(queue);

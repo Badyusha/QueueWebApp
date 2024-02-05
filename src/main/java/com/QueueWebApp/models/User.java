@@ -25,11 +25,24 @@ public class User {
 
     public User() { }
 
+    public User(User user){
+        this.id = user.id;
+        this.login = user.login;
+        this.fullName = user.fullName;
+        this.password = user.password;
+        this.passwordSalt = user.passwordSalt;
+    }
+
     public User(String fullName, String login, String password, byte[] passwordSalt) {
         this.fullName = fullName;
         this.login = login;
         this.password = password;
         this.passwordSalt = passwordSalt;
+    }
+
+    public User(Long id, String fullName, String login, String password, byte[] passwordSalt) {
+        this(fullName, login, password, passwordSalt);
+        this.id = id;
     }
 
     public Long getId() {

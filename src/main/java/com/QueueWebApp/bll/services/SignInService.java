@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SignInService {
-
 	private final DatabaseService databaseService;
 
 	@Autowired
@@ -22,9 +21,10 @@ public class SignInService {
 		if(user == null){
 			return false;
 		}
-		HttpSession session = request.getSession();
 
+		HttpSession session = request.getSession();
 		session.setAttribute("user", user);
+
 		return true;
 	}
 

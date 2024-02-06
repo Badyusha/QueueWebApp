@@ -80,7 +80,7 @@
 
         <div class="error-message">
                 <%
-                    if(((String)session.getAttribute("SignInError")) != null){
+                    if( ((String)session.getAttribute("SignInError")) != null) {
                         out.println("Incorrect username or password");
                     }
                 %>

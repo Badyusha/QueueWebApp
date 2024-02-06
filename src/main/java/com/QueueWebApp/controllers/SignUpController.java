@@ -25,10 +25,10 @@ public class SignUpController {
     @GetMapping("/SignUp")
     public String SignUp(HttpServletRequest request) {
         User user = SessionService.UserIsInSession(request);
-        if(user != null) {
-            return "redirect:/Home";
+        if(user == null) {
+            return "forward:/WEB-INF/views/SignUp.jsp";
         }
-        return "forward:/WEB-INF/views/SignUp.jsp";
+        return "redirect:/Home";
     }
 
     @PostMapping("/SignUp")

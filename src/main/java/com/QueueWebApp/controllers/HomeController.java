@@ -25,7 +25,7 @@ public class HomeController {
 	}
 
 	@GetMapping("/Home")
-	public String SignIn(HttpServletRequest request) {
+	public String Home(HttpServletRequest request) {
 		User user = SessionService.UserIsInSession(request);
 		if(user == null) {
 			return "redirect:/SignIn";
@@ -39,7 +39,7 @@ public class HomeController {
 	}
 
 	@PostMapping("/Home")
-	public String ProcessSignInForm(@RequestParam String action, HttpServletRequest request) {
+	public String ProcessHome(@RequestParam String action, HttpServletRequest request) {
 		if(action.equals("join")){
 			return "redirect:/Join";
 		}

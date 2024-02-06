@@ -2,7 +2,6 @@ package com.QueueWebApp.models;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "queues")
@@ -17,7 +16,7 @@ public class Queue {
 	@JoinColumn(name = "userId", nullable = false)
 	private User user;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "subjectId", nullable = false)
 	private Subject subject;
 

@@ -41,7 +41,10 @@ public class ProfileController {
 		if (action.equals("confirmDelete")) {
 			User user = (User) request.getSession().getAttribute("user");
 
-			databaseService.deleteUser(user);
+			if(!databaseService.deleteUser(user)) {
+				return "forward:/WEB-INF/views/Profile.jsp";
+			}
+
 			request.getSession().invalidate();
 
 			return "redirect:/SignIn";

@@ -80,9 +80,28 @@
     <input type="date" id="date" name="date"/><br><br>
 
     <button type="submit" id="join" name="action" value="join">Join</button>
-    <button type="submit" id="cancel" name="action" value="cancel">Cancel</button>
+    <button id="cancel" onclick="location.href='/Home'; return false;">Cancel</button>
 </form>
 
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var selectedDate = new Date(document.getElementById('date').value);
+        var currentDate = new Date();
+
+        var thresholdTime = new Date();
+        thresholdTime.setHours(8);
+        thresholdTime.setMinutes(0);
+
+        if (currentDate.getTime() >= thresholdTime.getTime() && selectedDate <= currentDate) {
+            alert("Registration for this item has been completed");
+        } else {
+            // Если время и дата удовлетворяют условию, отправить форму
+            this.submit();
+        }
+    });
+</script>
 
 
 

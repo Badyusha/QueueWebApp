@@ -17,4 +17,5 @@ public interface QueueRepository extends JpaRepository<Queue, Long> {
 
     @Query("SELECT u.subject FROM Queue u WHERE u.subject.id = ?1")
     Subject GetSubjectById(Long subjectId);
+
 }

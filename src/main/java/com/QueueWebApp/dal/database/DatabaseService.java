@@ -99,4 +99,24 @@ public class DatabaseService {
         }
         return userSubjects;
     }
+
+    public Queue GetQueueBySubjectIdAndUserId(Long subjectId, Long userId) {
+        Iterable<Queue> queues = queueRepository.findAll();
+        for (Queue item : queues) {
+            if (item.getSubject().getId().equals(subjectId) && item.getUser().getId().equals(userId)) {
+                return item;
+            }
+        }
+        return null;
+
+    }
+
+    public void RemoveUserFromQueue(Long subjectId, Long userId) {
+        Queue queue = GetQueueBySubjectIdAndUserId(subjectId,userId);
+        queueRepository.deleteById(queue.getId());
+    }
+
+    public void RemoveQueue(Long queueId) {
+        queueRepository.deleteById(queueId);
+    }
 }

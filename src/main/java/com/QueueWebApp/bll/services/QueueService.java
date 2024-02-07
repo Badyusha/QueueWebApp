@@ -29,10 +29,14 @@ public class QueueService {
 	public List<User> GetFinalUsersQueueList(Subject subject) {
 		String curDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		String subDate = subject.getDate().toString();
+		String curTime = new SimpleDateFormat("HH-mm").format(new Date());
 		Long subjectId = subject.getId();
 
 		int currentDate = Integer.parseInt(curDate.replace("-", ""));
 		int subjectDate = Integer.parseInt(subDate.replace("-", ""));
+		int currentTime = Integer.parseInt(curTime.replace("-", ""));
+
+		int finishedTimeRegistration = 1800;
 
 		if(currentDate > subjectDate) {
 			try {
@@ -44,7 +48,7 @@ public class QueueService {
 			return null;
 		}
 
-		if(currentDate != subjectDate) {
+		if(currentDate != subjectDate || currentTime > finishedTimeRegistration) {
 			return null;
 		}
 

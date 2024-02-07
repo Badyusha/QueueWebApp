@@ -54,11 +54,15 @@
             padding: 20px;
             border-radius: 5px;
             transform: translateX(100%);
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.3s ease-in-out;
         }
 
-        #menu.show {
+        #menu.show, #menuIcon.show {
             transform: translateX(0);
+        }
+
+        #menuIcon.show {
+            margin-right: 20px; /* Установите начальное значение */
         }
     </style>
 
@@ -73,8 +77,10 @@
 
                 if (isMenuVisible) {
                     menu.style.transform = "translateX(0)";
+                    menuIcon.style.marginRight = "220px"; /* Измените значение на нужное вам */
                 } else {
                     menu.style.transform = "translateX(100%)";
+                    menuIcon.style.marginRight = "20px"; /* Измените значение на начальное */
                 }
             });
 
@@ -85,6 +91,7 @@
                 if (!isClickInsideMenu && !isClickOnIcon && isMenuVisible) {
                     isMenuVisible = false;
                     menu.style.transform = "translateX(100%)";
+                    menuIcon.style.marginRight = "20px"; /* Измените значение на начальное */
                 }
             });
         });
@@ -119,8 +126,12 @@
     <p>
         <%
             out.println(subject.getDate());
+        %>
+    </p>
+    <p>
+        <%
             if(finalUsersList == null) {
-                out.println("QUEUE IS NOT READY... BITCH");
+                out.println("IT'S TOO EARLY or LAB HAS ALREADY PASSED... BITCH");
             } else {
         %>
     </p>

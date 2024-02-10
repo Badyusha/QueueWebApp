@@ -38,8 +38,8 @@ public class QueueController {
 		return "forward:/WEB-INF/views/Queue.jsp";
 	}
 
-	@PostMapping("/Queue/{id}")
-	public String ProcessQueue(@PathVariable String id, HttpServletRequest request) {
+	@PostMapping("/Queue/{subjectId}")
+	public String ProcessQueue(@PathVariable Long subjectId, HttpServletRequest request) {
 
 		return "redirect:/Home";
 	}

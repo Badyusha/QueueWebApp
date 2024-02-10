@@ -28,7 +28,7 @@ public class ChangePasswordController {
 
 
 	@GetMapping("/ChangePassword")
-	public String SignIn(HttpServletRequest request) {
+	public String ChangePassword(HttpServletRequest request) {
 		User user = SessionService.UserIsInSession(request);
 		if(user == null) {
 			return "redirect:/SignIn";
@@ -38,7 +38,7 @@ public class ChangePasswordController {
 	}
 
 	@PostMapping("/ChangePassword")
-	public String ProcessSignInForm(@RequestParam String password, @RequestParam String repeatedPassword,
+	public String ProcessChangePassword(@RequestParam String password, @RequestParam String repeatedPassword,
 									@RequestParam String action, HttpServletRequest request)
 	{
 		if(action.equals("cancel")) {

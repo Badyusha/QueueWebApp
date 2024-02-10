@@ -25,18 +25,19 @@ public class SignInController {
 
 	@GetMapping("/SignIn")
 	public String SignIn(HttpServletRequest request) {
+		request.getSession().setAttribute("SignInError", null);
 		User user = SessionService.UserIsInSession(request);
-		if(user != null) {
-			return "redirect:/Home";
+		if(user == null) {
+			return "forward:/WEB-INF/views/SignIn.jsp";
 		}
-		return "forward:/WEB-INF/views/SignIn.jsp";
+		return "redirect:/Home";
 	}
 
 	@PostMapping("/SignIn")
-	public String ProcessSignInForm(@RequestParam String login, @RequestParam String password,
+	public String ProcessSignInForm(@RequestParam String username, @RequestParam String password,
 									HttpServletRequest request)
 	{
-		if(!signInService.SuccessfulAuthorization(login, password, request)) {
+		if(!signInService.SuccessfulAuthorization(username, password, request)) {
 			request.getSession().setAttribute("SignInError", "Incorrect username or password");
 			return "forward:/WEB-INF/views/SignIn.jsp";
 		}

@@ -21,7 +21,7 @@ public class ProfileController {
 		this.databaseService = databaseService;
 	}
 	@GetMapping("/Profile")
-	public String SignIn(HttpServletRequest request) {
+	public String Profile(HttpServletRequest request) {
 		User user = SessionService.UserIsInSession(request);
 		if(user == null) {
 			return "redirect:/SignIn";
@@ -31,7 +31,7 @@ public class ProfileController {
 	}
 
 	@PostMapping("/Profile")
-	public String ProcessSignInForm(@RequestParam String action, HttpServletRequest request) {
+	public String ProcessProfile(@RequestParam String action, HttpServletRequest request) {
 		if (action.equals("changePassword")) {
 			return "redirect:/ChangePassword";
 		}

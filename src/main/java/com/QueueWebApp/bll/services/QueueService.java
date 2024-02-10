@@ -16,7 +16,7 @@ import java.util.*;
 public class QueueService {
 	private final QueueRepository queueRepository;
 
-	private static final Map<Subject, List<User>> usersQueueMap = new HashMap<>();
+	private static final Map<Long, List<User>> usersQueueMap = new HashMap<>();
 	@Autowired
 	public QueueService(QueueRepository queueRepository) {
 		this.queueRepository = queueRepository;
@@ -29,13 +29,18 @@ public class QueueService {
 	public List<User> GetFinalUsersQueueList(Subject subject) {
 		String curDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		String subDate = subject.getDate().toString();
+		String curTime = new SimpleDateFormat("HH-mm").format(new Date());
+		Long subjectId = subject.getId();
 
 		int currentDate = Integer.parseInt(curDate.replace("-", ""));
 		int subjectDate = Integer.parseInt(subDate.replace("-", ""));
+		int currentTime = Integer.parseInt(curTime.replace("-", ""));
+
+		int finishedTimeRegistration = 1800;
 
 		if(currentDate > subjectDate) {
 			try {
-				usersQueueMap.remove(subject);
+				usersQueueMap.remove(subject.getId());
 			}
 			catch(Exception e){
 				e.getStackTrace();
@@ -43,18 +48,18 @@ public class QueueService {
 			return null;
 		}
 
-		if(currentDate != subjectDate) {
+		if(currentDate != subjectDate || currentTime > finishedTimeRegistration) {
 			return null;
 		}
 
-		if(usersQueueMap.containsKey(subject)) {
-			return usersQueueMap.get(subject);
+		if(usersQueueMap.containsKey(subjectId)) {
+			return usersQueueMap.get(subjectId);
 		}
 
 		List<User> usersList = queueRepository.GetUsersBySubjectId(subject.getId());
 		Collections.shuffle(usersList);
 
-		usersQueueMap.put(subject, usersList);
+		usersQueueMap.put(subjectId, usersList);
 
 		return usersList;
 	}

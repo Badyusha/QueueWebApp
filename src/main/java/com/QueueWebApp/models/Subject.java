@@ -28,8 +28,28 @@ public class Subject {
 		this.date = date;
 	}
 
-	public Subject() {
+	public Subject() { }
+
+	@Override
+	public boolean equals(Object object) {
+		// If the object is compared with itself then return true
+		if (object == this) {
+			return true;
+		}
+
+        /* Check if o is an instance of Complex or not
+          "null instanceof [type]" also returns false */
+		if (!(object instanceof Subject)) {
+			return false;
+		}
+
+		// typecast o to Complex so that we can compare data members
+		Subject subjectObject = (Subject) object;
+
+		// Compare the data members and return accordingly
+		return this.id.equals(subjectObject.id);
 	}
+
 
 	public Long getId() {
 		return id;

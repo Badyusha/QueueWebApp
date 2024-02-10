@@ -16,8 +16,8 @@ public class SignInService {
 	public SignInService(DatabaseService databaseService) {
 		this.databaseService = databaseService;
 	}
-	public boolean SuccessfulAuthorization(String login, String password, HttpServletRequest request) {
-		User user = databaseService.UserExists(login,password);
+	public boolean SuccessfulAuthorization(String username, String password, HttpServletRequest request) {
+		User user = databaseService.UserExists(username,password);
 		if(user == null){
 			return false;
 		}

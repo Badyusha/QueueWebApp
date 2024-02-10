@@ -43,8 +43,8 @@ public class DatabaseService {
         return null;
     }
 
-    public User UserExists(String login, String password) {
-        User user = IsLoginInDb(login);
+    public User UserExists(String username, String password) {
+        User user = IsLoginInDb(username);
         if(user == null) {
             return null;
         }

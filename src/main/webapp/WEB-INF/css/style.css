@@ -51,6 +51,11 @@ input[type="submit"]:hover {
     text-align: center;
     font-size: 14px;
 }
+.sign-in {
+    margin-top: -20px;
+    text-align: center;
+    font-size: 14px;
+}
 .error-message{
     color: red;
     font-size: 12px;

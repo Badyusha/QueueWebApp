@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Page</title>
+    <title>Menu</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -41,20 +41,13 @@
     </style>
 </head>
 <body>
-
-
 <div class="container">
     <h1>Menu</h1>
-
-    <form method="post" th:action="@{/Menu}" th:method="post">
-        <button type="submit"  name="action" value="profile">Profile</button><br>
-        <button type="submit" name="action" value="about app">About app</button><br>
+    <form method="post" th:action="@{/Menu}">
         <button type="submit" name="action" value="home">Home</button><br>
+        <button type="submit" name="action" value="profile">Profile</button><br>
+        <button type="submit" name="action" value="signOut">Sign out</button><br>
     </form>
 </div>
-
-
-
-
 </body>
 </html>

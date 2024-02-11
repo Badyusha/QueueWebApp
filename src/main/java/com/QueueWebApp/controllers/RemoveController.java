@@ -3,10 +3,12 @@ package com.QueueWebApp.controllers;
 import com.QueueWebApp.bll.services.HomeService;
 import com.QueueWebApp.bll.services.RemoveService;
 import com.QueueWebApp.bll.services.SessionService;
+import com.QueueWebApp.models.Subject;
 import com.QueueWebApp.models.User;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,15 +40,15 @@ public class RemoveController {
 
     @PostMapping("/Remove")
     public String ProcessRemoveForm(@RequestParam String action,
-                                    @RequestParam(required = false, name = "selectedSubjects") List<Long> selectedSubjects,
+                                    @RequestParam(required = false, name = "selectedQueues") List<Long> selectedQueues,
                                     HttpServletRequest request) {
         if (action.equals("cancel")) {
             return "redirect:/Home";
         }
         User user = SessionService.UserIsInSession(request);
 
-        if (action.equals("remove") && selectedSubjects != null && !selectedSubjects.isEmpty()) {
-            for (Long subjectId : selectedSubjects) {
+        if (action.equals("remove") && selectedQueues != null && !selectedQueues.isEmpty()) {
+            for (Long subjectId : selectedQueues) {
                 // Здесь выполните удаление выбранных очередей по их идентификаторам
                 removeService.RemoveUserFromQueue(subjectId, user.getId());
             }
@@ -56,5 +58,4 @@ public class RemoveController {
 
         return "redirect:/Remove";
     }
-
 }

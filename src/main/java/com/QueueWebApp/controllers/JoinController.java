@@ -20,14 +20,16 @@ import java.util.List;
 @Controller
 public class JoinController {
 	private final JoinService joinService;
+
 	@Autowired
 	public JoinController(JoinService joinService) {
 		this.joinService = joinService;
 	}
+
 	@GetMapping("/Join")
-	public String join(HttpServletRequest request, Model model) {
+	public String Join(HttpServletRequest request, Model model) {
 		User user = SessionService.UserIsInSession(request);
-		if(user == null) {
+		if (user == null) {
 			return "redirect:/SignIn";
 		}
 
@@ -48,18 +50,17 @@ public class JoinController {
 	}
 
 	@PostMapping("/Join")
-	public String processForm(HttpServletRequest request,
-							  @RequestParam String subject,
-							  @RequestParam String subgroup,
-							  @RequestParam String date,
-							  @RequestParam String action)
-	{
+	public String Join(HttpServletRequest request,
+					   @RequestParam String subject,
+					   @RequestParam String subgroup,
+					   @RequestParam String date,
+					   @RequestParam String action) {
 		User user = SessionService.UserIsInSession(request);
 		if (user == null) {
 			return "redirect:/SignIn";
 		}
 
-		if ("join".equals(action)) {
+		if (action.equals("join")) {
 			try {
 				LocalDate parsedDate = LocalDate.parse(date);
 				joinService.AddUserToQueue(user.getId(), subject, subgroup, parsedDate);

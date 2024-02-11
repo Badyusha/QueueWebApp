@@ -5,7 +5,7 @@
   Time: 23:22
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" import="java.util.List"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" import="java.util.List" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,18 +32,16 @@
         }
         button {
             padding: 10px 20px;
-            border:none;
-            border-radius :5px;
-            color:white;
-            cursor:pointer
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
         }
-        #join { background-color : skyblue;}
-        #cancel { background-color : tomato;}
+        #join { background-color: skyblue; }
+        #cancel { background-color: tomato; }
     </style>
 </head>
 <body>
-
-
 
 <form method="post">
     <h1>Join</h1>
@@ -79,6 +77,8 @@
     <label for="date">Date</label><br>
     <input type="date" id="date" name="date"/><br><br>
 
+    <input type="hidden" name="action" value="join"/>
+
     <button type="submit" id="join" name="action" value="join">Join</button>
     <button id="cancel" onclick="location.href='/Home'; return false;">Cancel</button>
 </form>
@@ -101,8 +101,6 @@
         }
     });
 </script>
-
-
 
 </body>
 </html>

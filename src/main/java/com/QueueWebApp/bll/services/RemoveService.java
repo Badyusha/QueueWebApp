@@ -20,8 +20,4 @@ public class RemoveService {
     public void RemoveUserFromQueue(Long subjectId, Long userId) {
         databaseService.RemoveUserFromQueue(subjectId, userId);
     }
-
-    public void RemoveQueue(Long queueId) {
-        databaseService.RemoveQueue(queueId);
-    }
 }

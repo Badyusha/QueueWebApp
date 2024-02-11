@@ -115,8 +115,4 @@ public class DatabaseService {
         Queue queue = GetQueueBySubjectIdAndUserId(subjectId,userId);
         queueRepository.deleteById(queue.getId());
     }
-
-    public void RemoveQueue(Long queueId) {
-        queueRepository.deleteById(queueId);
-    }
 }

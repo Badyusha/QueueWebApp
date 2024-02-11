@@ -97,7 +97,6 @@
         if (currentDate.getTime() >= thresholdTime.getTime() && selectedDate <= currentDate) {
             alert("Registration for this item has been completed");
         } else {
-            // Если время и дата удовлетворяют условию, отправить форму
             this.submit();
         }
     });

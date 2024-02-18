@@ -35,9 +35,19 @@ public class ProfileController {
 		if (action.equals("changePassword")) {
 			return "redirect:/ChangePassword";
 		}
+
 		if (action.equals("deleteAccount")) {
 			return "redirect:/Confirmation";
 		}
+
+		if(action.equals("profile")){
+			return "redirect:/Profile";
+		}
+
+		if(action.equals("home")){
+			return "redirect:/Home";
+		}
+
 		if (action.equals("confirmDelete")) {
 			User user = (User) request.getSession().getAttribute("user");
 

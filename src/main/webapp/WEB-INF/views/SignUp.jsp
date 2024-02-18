@@ -13,57 +13,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign up to App</title>
+
   <style>
-    body {
-      background-color: white;
-      font-family: Arial, sans-serif;
-    }
-    h1 {
-      color: black;
-      text-align: center;
-    }
-    input[type="text"],
-    input[type="password"] {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-      border-radius: 4px;
-      background-color: #f8f8f8;
-    }
-    input[type="submit"] {
-      width: 100%;
-      background-color: green;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    input[type="submit"]:hover {
-      background-color: #45a049;
-    }
-    .container {
-      border-radius: 5px;
-      background-color: white;
-      padding: 20px;
-      width: 300px;
-      margin: auto;
-      margin-top: 50px;
-    }
-    .error-message {
-      color: red;
-      font-size: 12px
-    }
-    .sign-in {
-      text-align: center;
-      margin-top: 5px;
-      font-size: 14px;
-    }
+    <%@include file="/WEB-INF/css/SignUpStyle.css"%>
   </style>
+
 </head>
 <body>
 <div class="container">

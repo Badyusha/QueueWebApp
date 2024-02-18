@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -39,7 +40,10 @@ public class QueueController {
 	}
 
 	@PostMapping("/Queue/{subjectId}")
-	public String ProcessQueue(@PathVariable Long subjectId, HttpServletRequest request) {
+	public String ProcessQueue(@RequestParam String action) {
+		if(action.equals("profile")) {
+			return "redirect:/Profile";
+		}
 
 		return "redirect:/Home";
 	}

@@ -33,7 +33,7 @@ public class QueueService {
 		Long subjectId = subject.getId();
 
 		int currentDate = Integer.parseInt(curDate.replace("-", ""));
-		int subjectDate = Integer.parseInt(subDate.replace("-", ""));
+		int subjectDate = Integer.parseInt(subDate.replace("-", ""));	
 		int currentTime = Integer.parseInt(curTime.replace("-", ""));
 
 		int finishedTimeRegistration = 1800;

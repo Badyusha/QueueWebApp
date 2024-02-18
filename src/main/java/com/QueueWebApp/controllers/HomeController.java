@@ -48,6 +48,14 @@ public class HomeController {
 			return "redirect:/Remove";
 		}
 
+		if(action.equals("profile")){
+			return "redirect:/Profile";
+		}
+
+		if(action.equals("home")){
+			return "redirect:/Home";
+		}
+
 		return "redirect:/Queue/" + action;
 	}
 }

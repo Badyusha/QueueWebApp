@@ -25,12 +25,8 @@ public class MenuController {
 
     @PostMapping("/Menu")
     public String Menu(@RequestParam String action, HttpServletRequest request) {
-        if(action.equals("profile")){
+        if(action.equals("profile")) {
             return "redirect:/Profile";
-        }
-
-        if(action.equals("about app")){
-            return "redirect:/AboutApp";
         }
 
         return "redirect:/Home";

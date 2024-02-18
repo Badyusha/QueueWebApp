@@ -12,33 +12,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            text-align: center;
-        }
-        button {
-            padding: 10px 20px;
-            margin-top: 20px;
-            font-size: large;
-        }
-        #join {
-            background-color: blue;
-            color:white;
-        }
 
-        #remove {
-            background-color:red;
-            color:white;
-        }
+    <style>
+        <%@include file="/WEB-INF/css/RemoveStyle.css"%>
     </style>
+
+    <script>
+        <%@include file="/WEB-INF/script/MovingMenuScript.js"%>
+    </script>
+
 </head>
 <body>
 

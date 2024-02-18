@@ -5,29 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .profile {
-            max-width: 400px;
-            margin: auto;
-        }
-        input[type="password"] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-            border-radius: 4px;
-            background-color: #f8f8f8;
-        }
-        .error-message{
-            color: red;
-            font-size: 12px;
-        }
+        <%@include file="/WEB-INF/css/ChangePasswordStyle.css"%>
     </style>
+
+    <script>
+        <%@include file="/WEB-INF/script/MovingMenuScript.js"%>
+    </script>
+
 </head>
 <body>
 

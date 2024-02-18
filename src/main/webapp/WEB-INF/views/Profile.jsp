@@ -11,44 +11,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .profile {
-            max-width: 400px;
-            margin: auto;
-        }
-        .avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: grey;
-            margin: auto;
-        }
-        .user_info, button {
-            /*width: calc(100% - 20px);*/
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-        .home {
-            text-align: left;
-            margin-top: 20px;
-            font-size: 14px;
-        }
-        .label {
-            color: grey;
-            font-size: 10px;
-        }
 
+    <style>
+        <%@include file="/WEB-INF/css/ProfileStyle.css"%>
+        <%@include file="/WEB-INF/css/MovingMenuStyle.css"%>
     </style>
+
+    <script>
+        <%@include file="/WEB-INF/script/MovingMenuScript.js"%>
+        <%@include file="/WEB-INF/script/ProfileScript.js"%>
+    </script>
+
 </head>
 <body>
-    <div class="profile">
-        <div class="home">
-            <a href="/Home">Home</a>
-        </div>
 
+<jsp:include page="MovingMenuCode.jsp" />
+
+    <div class="profile">
         <div class="avatar"></div>
 
         <div class="label">Name</div>
@@ -77,15 +56,6 @@
                 <button type="button" onclick="hideConfirmation()">Cancel</button>
             </form>
         </div>
-
-        <script>
-            function showConfirmation() {
-                document.getElementById("confirmationModal").style.display = "block";
-            }
-            function hideConfirmation() {
-                document.getElementById("confirmationModal").style.display = "none";
-            }
-        </script>
 
     </div>
 

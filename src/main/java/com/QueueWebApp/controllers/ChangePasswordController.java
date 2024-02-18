@@ -34,7 +34,7 @@ public class ChangePasswordController {
 			return "redirect:/SignIn";
 		}
 
-		return "forward:/WEB-INF/views/changePassword.jsp";
+		return "forward:/WEB-INF/views/ChangePassword.jsp";
 	}
 
 	@PostMapping("/ChangePassword")
@@ -43,6 +43,14 @@ public class ChangePasswordController {
 	{
 		if(action.equals("cancel")) {
 			return "redirect:/Profile";
+		}
+
+		if(action.equals("profile")){
+			return "redirect:/Profile";
+		}
+
+		if(action.equals("home")){
+			return "redirect:/Home";
 		}
 
 		String error = SignUpService.passwordsAreCorrect(password, repeatedPassword);

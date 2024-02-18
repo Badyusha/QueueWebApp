@@ -8,10 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" import="com.QueueWebApp.models.User"%>
 <html lang="en">
 <head>
-    <style><%@include file="/WEB-INF/css/style.css"%></style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
+
+    <style>
+        <%@include file="/WEB-INF/css/SignInStyle.css"%>
+    </style>
+
 </head>
 <body>
 <div class="container">

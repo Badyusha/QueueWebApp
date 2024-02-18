@@ -11,39 +11,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Page</title>
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-        }
-        input[type=text], input[type=date] {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-        button {
-            padding: 10px 20px;
-            border:none;
-            border-radius :5px;
-            color:white;
-            cursor:pointer
-        }
-        #join { background-color : skyblue;}
-        #cancel { background-color : tomato;}
+        <%@include file="/WEB-INF/css/JoinStyle.css"%>
     </style>
+
+    <script>
+        <%@include file="/WEB-INF/script/MovingMenuScript.js"%>
+    </script>
+
 </head>
 <body>
-
-
 
 <form method="post">
     <h1>Join</h1>

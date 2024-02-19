@@ -24,6 +24,13 @@ public class SignUpController {
 
     @GetMapping("/SignUp")
     public String SignUp(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.setAttribute("fullName", null);
+        session.setAttribute("login", null);
+        session.setAttribute("fullNameError", null);
+        session.setAttribute("loginError", null);
+        session.setAttribute("passwordError", null);
+
         User user = SessionService.UserIsInSession(request);
         if(user == null) {
             return "forward:/WEB-INF/views/SignUp.jsp";
@@ -52,13 +59,9 @@ public class SignUpController {
             return "forward:/WEB-INF/views/SignUp.jsp";
         }
 
-        try {
-            User user = signUpService.RegisterUser(fullName, login, password);
-            HttpSession session = request.getSession();
-            session.setAttribute("user", user);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        User user = signUpService.RegisterUser(fullName, login, password);
+        HttpSession session = request.getSession();
+        session.setAttribute("user", user);
 
         return "redirect:/Home";
     }

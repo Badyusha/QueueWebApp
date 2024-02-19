@@ -26,6 +26,7 @@ public class SignInController {
 	@GetMapping("/SignIn")
 	public String SignIn(HttpServletRequest request) {
 		request.getSession().setAttribute("SignInError", null);
+
 		User user = SessionService.UserIsInSession(request);
 		if(user == null) {
 			return "forward:/WEB-INF/views/SignIn.jsp";

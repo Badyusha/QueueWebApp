@@ -46,20 +46,18 @@ input[type="submit"]:hover {
     margin: auto;
     margin-top: 100px;
 }
+.error-message{
+    color: red;
+    font-size: 12px;
+}
+.form-label{
+    color: white;
+}
 .create-account {
     margin-top: -20px;
     text-align: center;
     font-size: 14px;
 }
-.error-message{
-    color: red;
-    font-size: 12px;
-}
-
-.form-label{
-    color: white;
-}
-
 .href{
-    color: #2f81f7;
+    color: #8A67C2;
 }

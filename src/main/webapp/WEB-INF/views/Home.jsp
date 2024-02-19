@@ -22,7 +22,7 @@
 <jsp:include page="MovingMenuCode.jsp" />
 
 <div class="container">
-    <h1>You registratied</h1>
+    <h1>You registered</h1>
 
     <div id="sample" style="margin-top:20px;">
         <form method="post" th:action="@{/Home}" th:method="post">

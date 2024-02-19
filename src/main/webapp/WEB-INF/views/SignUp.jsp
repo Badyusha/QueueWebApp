@@ -21,14 +21,14 @@
 </head>
 <body>
 <div class="container">
-  <h1>Sign up to App</h1>
+  <h1>Sign up</h1>
   <form method="post">
-    <label for="fullName">Full name</label>
+<%--    <label for="fullName">Full name</label>--%>
     <input
             type="text"
             id="fullName"
             name="fullName"
-            placeholder="Enter your first and last name"
+            placeholder="Full name"
             value="<%
              String fullName = (String) session.getAttribute("fullName");
              if(fullName != null){
@@ -45,12 +45,12 @@
       %>
     </div>
 
-    <label for="login">Login</label>
+<%--    <label for="login">Login</label>--%>
     <input
             type="text"
             id="login"
             name="login"
-            placeholder="Enter your login"
+            placeholder="Username"
             value="<%
               String username = (String) session.getAttribute("login");
               if(username != null){
@@ -67,19 +67,19 @@
       %>
     </div>
 
-    <label for="password">Password</label>
+<%--    <label for="password">Password</label>--%>
     <input
             type="password"
             id="password"
             name="password"
-            placeholder="Enter your password"
+            placeholder="Password"
     />
-    <label for="repeatPassword">Repeat Password</label>
+<%--    <label for="repeatPassword">Repeat Password</label>--%>
     <input
             type="password"
             id="repeatPassword"
             name="repeatPassword"
-            placeholder="Enter your password again"
+            placeholder="Repeat password"
     />
 
     <div  class="error-message">
@@ -93,7 +93,7 @@
     <input type="submit" value="Register" />
   </form>
   <div class="sign-in">
-    <a href="/SignIn">Sign In</a>
+    <a href="/SignIn" class="href">Sign In</a>
   </div>
 </div>
 </body>

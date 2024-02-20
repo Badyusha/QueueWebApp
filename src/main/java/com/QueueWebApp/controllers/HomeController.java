@@ -40,12 +40,8 @@ public class HomeController {
 
 	@PostMapping("/Home")
 	public String ProcessSignInForm(@RequestParam String action, HttpServletRequest request) {
-		if(action.equals("join")){
+		if(action.equals("Join")){
 			return "redirect:/Join";
-		}
-
-		if(action.equals("remove")){
-			return "redirect:/Remove";
 		}
 
 		if(action.equals("profile")){

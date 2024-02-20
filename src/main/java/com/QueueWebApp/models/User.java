@@ -13,7 +13,7 @@ public class User {
     @Column(name = "fullName", columnDefinition = "text")
     private String fullName;
 
-    @Column(name = "login", columnDefinition = "70")
+    @Column(name = "login", columnDefinition = "varchar(70)")
     private String login;
 
 

@@ -21,7 +21,6 @@
 <div class="container">
     <h1>Sign in</h1>
     <form method="post">
-<%--        <label for="login" class="form-label">Login</label>--%>
         <input
                 type="text"
                 id="username"
@@ -29,7 +28,6 @@
                 placeholder="Username"
         />
 
-<%--        <label for="password" class="form-label">Password</label>--%>
         <input
                 type="password"
                 id="password"

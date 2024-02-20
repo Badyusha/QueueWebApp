@@ -16,13 +16,13 @@ public class Subject {
 	@Column(name = "subjectName", columnDefinition = "varchar(50)")
 	private String subjectName;
 
-	@Column(name = "subgroup", columnDefinition = "varchar(5)")
-	private String subgroup;
+	@Column(name = "subgroup", columnDefinition = "int")
+	private Integer subgroup;
 
 	@Column(name = "date")
 	private LocalDate date;
 
-	public Subject(String subjectName, String subgroup, LocalDate date) {
+	public Subject(String subjectName, Integer subgroup, LocalDate date) {
 		this.subjectName = subjectName;
 		this.subgroup = subgroup;
 		this.date = date;
@@ -63,11 +63,11 @@ public class Subject {
 		this.subjectName = subjectName;
 	}
 
-	public String getSubgroup() {
+	public Integer getSubgroup() {
 		return subgroup;
 	}
 
-	public void setSubgroup(String subgroup) {
+	public void setSubgroup(Integer subgroup) {
 		this.subgroup = subgroup;
 	}
 

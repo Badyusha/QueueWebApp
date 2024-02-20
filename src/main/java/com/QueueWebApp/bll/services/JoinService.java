@@ -16,7 +16,7 @@ public class JoinService {
 	public JoinService(DatabaseService databaseService) {
 		this.databaseService = databaseService;
 	}
-	public void AddUserToQueue(Long userId, String subjectName, String subgroup, LocalDate date) {
+	public void AddUserToQueue(Long userId, String subjectName, Integer subgroup, LocalDate date) {
 		Subject subject = new Subject(subjectName, subgroup, date);
 		Long subjectId = databaseService.GetSubject(subject).getId();
 		databaseService.AddUserToQueue(userId, subjectId);

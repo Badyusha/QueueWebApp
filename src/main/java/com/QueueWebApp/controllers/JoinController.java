@@ -50,7 +50,7 @@ public class JoinController {
 	@PostMapping("/Join")
 	public String processForm(HttpServletRequest request,
 							  @RequestParam String subject,
-							  @RequestParam String subgroup,
+							  @RequestParam Integer subgroup,
 							  @RequestParam String date,
 							  @RequestParam String action)
 	{

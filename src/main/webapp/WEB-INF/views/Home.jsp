@@ -21,32 +21,53 @@
 
 <jsp:include page="MovingMenuCode.jsp" />
 
-<div class="container">
-    <h1>You registered</h1>
+<div>
+    <h1>
+        <%
+            List<Subject> subjectsList = (List<Subject>) session.getAttribute("subjectsList");
+            if(subjectsList.isEmpty()){
+				out.print("You are not registered on any lab yet");
+            } else {
+                out.print("You are registered on");
+            }
+        %>
+    </h1>
 
     <div id="sample" style="margin-top:20px;">
-        <form method="post" th:action="@{/Home}" th:method="post">
+        <form method="post" th:action="@{/Home}" th:method="post" class="queue-form">
             <%
-                for(Subject subject : ((List<Subject>) session.getAttribute("subjectsList"))) {
-                    if (subject != null) {
+                for(Subject subject : (subjectsList)) {
+                    if (subject == null) {
+                        continue;
+					}
             %>
-            <button type="submit" name="action" value="<%out.print(subject.getId());%>">
-            <%
-                        out.println(subject.getSubjectName());
-                    }
-            %>
-            </button><br>
+            <button type="submit" name="action" value="<%= subject.getId() %>" class="queue-button">
+                <div class="subject-subgroup-line">
+                <%
+                    Integer subgr = subject.getSubgroup();
+                    String subgroup = (subgr == 0 ? "" : (" (" + subgr.toString() + ')'));
+                    out.print(subject.getSubjectName() + subgroup);
+                %>
+                </div>
+            <br>
+                <div class="date-line">
+                <%
+                    out.print(subject.getDate());
+                %>
+                </div>
+
+            </button>
+            <br>
             <%
 				}
             %>
+            <button type="submit" name="action" value="join" class="join-button">Join</button>
         </form>
     </div>
 
-    <!-- Join and Remove buttons -->
-    <form method="post" th:action="@{/Home}" th:method="post">
-        <button type="submit" name="action" value="join">Join</button>
-        <button type="submit" name="action" value="remove">Remove</button>
-    </form>
+<%--    <form method="post" th:action="@{/Home}" th:method="post" class="join-buttons-form">--%>
+<%--        <button type="submit" name="action" value="join" class="join-button">Join</button>--%>
+<%--    </form>--%>
 
 </div>
 

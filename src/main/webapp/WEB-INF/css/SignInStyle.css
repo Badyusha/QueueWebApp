@@ -25,7 +25,6 @@ input[type="submit"] {
     font-size: 16px;
     width: 100%;
     background-color: #67479B;
-    /*67479B*/
     color: white;
     padding: 14px 20px;
     margin: 20px 0;
@@ -35,8 +34,6 @@ input[type="submit"] {
 }
 input[type="submit"]:hover {
     background-color: #8A67C2;
-    /*45a049*/
-    /*8A67C2*/
 }
 .container {
     border-radius: 25px;
@@ -49,9 +46,6 @@ input[type="submit"]:hover {
 .error-message{
     color: red;
     font-size: 12px;
-}
-.form-label{
-    color: white;
 }
 .create-account {
     margin-top: -20px;

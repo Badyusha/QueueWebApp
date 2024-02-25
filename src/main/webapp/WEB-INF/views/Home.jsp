@@ -11,29 +11,14 @@
     <style>
         <%@include file="/WEB-INF/css/HomeStyle.css"%>
         <%@include file="/WEB-INF/css/MovingMenuStyle.css"%>
+        <%@include file="/WEB-INF/css/HeaderStyle.css"%>
+        <%@include file="/WEB-INF/css/LinksStyle.css"%>
     </style>
-
-    <script>
-        <%@include file="/WEB-INF/script/MovingMenuScript.js"%>
-    </script>
 
 </head>
 <body>
 
-<%--<jsp:include page="MovingMenuCode.jsp" />--%>
-
-
-    <div class="header">
-        <a href="/Profile">
-            <%= ((User) session.getAttribute("user")).getLogin() %>
-        </a>
-        <a href="/Profile">
-            <span class="avatar">
-                <img src="${pageContext.request.contextPath}/images/defaultAvatar.png" alt="Avatar">
-            </span>
-        </a>
-
-    </div>
+    <jsp:include page="Header.jsp" />
 
     <h1>
         <%
@@ -78,11 +63,7 @@
         </form>
     </div>
 
-    <div class="links">
-        <a href="https://github.com/Badyusha/QueueWebApp">
-            <img src="${pageContext.request.contextPath}/images/github.png" alt="GitHub">
-        </a>
-    </div>
+    <jsp:include page="Links.jsp" />
 
 </body>
 </html>

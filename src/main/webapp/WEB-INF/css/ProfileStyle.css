@@ -1,9 +1,20 @@
 body {
-    font-family: Arial, sans-serif;
+    background-color: #0D1117;
+    font-family: -apple-system, BlinkMacSystemFont,
+    "Segoe UI","Noto Sans", Helvetica,Arial,
+    sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+    display: block;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
 }
 .profile {
-    max-width: 400px;
+    margin-top: -15px;
     margin: auto;
+    border-radius: 25px;
+    background-color: #161b22;
+    padding: 20px;
+    width: 300px;
 }
 .avatar {
     width: 100px;
@@ -12,12 +23,34 @@ body {
     background-color: grey;
     margin: auto;
 }
-.user_info, button {
-    /*width: calc(100% - 20px);*/
+.user_info {
+    color: white;
     padding: 10px;
     margin-bottom: 20px;
 }
 .label {
     color: grey;
     font-size: 10px;
+}
+
+button[type="submit"],
+button[type="button"] {
+    font-size: 16px;
+    width: 100%;
+    background-color: #67479B;
+    color: white;
+    padding: 14px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+button[type="submit"]:hover,
+button[type="button"]:hover {
+    background-color: #8A67C2;
+}
+
+#confirmationModel {
+    color: white;
+    display: none;
 }

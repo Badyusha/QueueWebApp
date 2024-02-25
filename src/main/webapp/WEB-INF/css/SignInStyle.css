@@ -17,7 +17,6 @@ input[type="password"] {
     display: inline-block;
     box-sizing: border-box;
     border: none;
-    /*border: 1px solid #ccc;*/
     border-radius: 7px;
     background-color: #0D1117;
 }

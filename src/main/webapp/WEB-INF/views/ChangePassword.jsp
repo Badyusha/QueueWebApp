@@ -8,28 +8,26 @@
 
     <style>
         <%@include file="/WEB-INF/css/ChangePasswordStyle.css"%>
+        <%@include file="/WEB-INF/css/HeaderStyle.css"%>
+        <%@include file="/WEB-INF/css/LinksStyle.css"%>
     </style>
-
-    <script>
-        <%@include file="/WEB-INF/script/MovingMenuScript.js"%>
-    </script>
 
 </head>
 <body>
+
+<jsp:include page="Header.jsp" />
 
 <div class="profile">
 
     <form method="post" th:action="@{/ChangePassword}" th:method="post">
         <!-- Other form fields and user information -->
 
-        <label for="newPassword">New password</label>
         <input
                 type="password"
                 id="newPassword" name="password"
                 placeholder="New password"
         />
 
-        <label for="repeatedPassword">Repeat password</label>
         <input
                 type="password"
                 id="repeatedPassword" name="repeatedPassword"
@@ -46,8 +44,9 @@
         <button type="submit" name="action" value="change">Change</button>
         <button type="submit" name="action" value="cancel">Cancel</button>
     </form>
-
 </div>
+
+<jsp:include page="Links.jsp" />
 
 </body>
 </html>

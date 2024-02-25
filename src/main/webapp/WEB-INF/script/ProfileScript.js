@@ -1,6 +1,6 @@
 function showConfirmation() {
-    document.getElementById("confirmationModal").style.display = "block";
+    document.getElementById("confirmationModel").style.display = "block";
 }
 function hideConfirmation() {
-    document.getElementById("confirmationModal").style.display = "none";
+    document.getElementById("confirmationModel").style.display = "none";
 }

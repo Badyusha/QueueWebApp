@@ -25,6 +25,8 @@ public class ChangePasswordController {
 
 	@GetMapping("/ChangePassword")
 	public String ChangePassword(HttpServletRequest request) {
+		request.getSession().setAttribute("error", null);
+
 		User user = SessionService.UserIsInSession(request);
 		if(user == null) {
 			return "redirect:/SignIn";
@@ -37,11 +39,7 @@ public class ChangePasswordController {
 	public String ProcessChangePassword(@RequestParam String password, @RequestParam String repeatedPassword,
 									@RequestParam String action, HttpServletRequest request)
 	{
-		if(action.equals("cancel")) {
-			return "redirect:/Profile";
-		}
-
-		if(action.equals("profile")){
+		if(action.equals("cancel") || action.equals("profile")) {
 			return "redirect:/Profile";
 		}
 
@@ -51,12 +49,12 @@ public class ChangePasswordController {
 
 		String error = SignUpService.passwordsAreCorrect(password, repeatedPassword);
 		if (!ChangePasswordService.ErrorIsNull(error, request)) {
-			return "redirect:/ChangePassword";
+			return "forward:/WEB-INF/views/ChangePassword.jsp";
 		}
 
 		error = ChangePasswordService.CurrentPasswordMatchesDesired(password, request);
 		if(!ChangePasswordService.ErrorIsNull(error, request)) {
-			return "redirect:/ChangePassword";
+			return "forward:/WEB-INF/views/ChangePassword.jsp";
 		}
 
 		User user = (User) request.getSession().getAttribute("user");

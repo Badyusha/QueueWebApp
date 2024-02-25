@@ -1,0 +1,17 @@
+.links {
+    height: 3em;
+    width: 100vw;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: #161b22;
+    position: fixed;
+    bottom: 0;
+    padding: 10px;
+    display: flex;
+}
+.links img {
+    height: 2.7em;
+    width: 2.7em;
+    margin: auto;
+}

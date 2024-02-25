@@ -1,12 +1,8 @@
-package com.QueueWebApp.bll.services;
+package com.QueueWebApp.services;
 
-import com.QueueWebApp.dal.database.DatabaseService;
-import com.QueueWebApp.models.Subject;
-import com.QueueWebApp.models.User;
+import com.QueueWebApp.database.DatabaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class HomeService {

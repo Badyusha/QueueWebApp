@@ -1,6 +1,6 @@
-package com.QueueWebApp.dal.database;
+package com.QueueWebApp.database;
 
-import com.QueueWebApp.bll.services.EncryptionService;
+import com.QueueWebApp.services.EncryptionService;
 import com.QueueWebApp.models.Queue;
 import com.QueueWebApp.models.Subject;
 import com.QueueWebApp.models.User;
@@ -8,7 +8,6 @@ import com.QueueWebApp.repo.QueueRepository;
 import com.QueueWebApp.repo.SubjectRepository;
 import com.QueueWebApp.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

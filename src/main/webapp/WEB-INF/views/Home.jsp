@@ -1,7 +1,8 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" import="com.QueueWebApp.models.Subject"%>
-  <%@ page import="java.util.List" %>
-  <html lang="en">
+<%@ page import="java.util.List" %>
+<%@ page import="com.QueueWebApp.models.User" %>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,9 +20,21 @@
 </head>
 <body>
 
-<jsp:include page="MovingMenuCode.jsp" />
+<%--<jsp:include page="MovingMenuCode.jsp" />--%>
 
-<div>
+
+    <div class="header">
+        <a href="/Profile">
+            <%= ((User) session.getAttribute("user")).getLogin() %>
+        </a>
+        <a href="/Profile">
+            <span class="avatar">
+                <img src="${pageContext.request.contextPath}/images/defaultAvatar.png" alt="Avatar">
+            </span>
+        </a>
+
+    </div>
+
     <h1>
         <%
             List<Subject> subjectsList = (List<Subject>) session.getAttribute("subjectsList");
@@ -33,7 +46,7 @@
         %>
     </h1>
 
-    <div id="sample" style="margin-top:20px;">
+    <div id="sample">
         <form method="post" th:action="@{/Home}" th:method="post" class="queue-form">
             <%
                 for(Subject subject : (subjectsList)) {
@@ -61,15 +74,15 @@
             <%
 				}
             %>
-            <button type="submit" name="action" value="join" class="join-button">Join</button>
+            <button type="submit" name="action" value="Join" class="join-button">Join</button>
         </form>
     </div>
 
-<%--    <form method="post" th:action="@{/Home}" th:method="post" class="join-buttons-form">--%>
-<%--        <button type="submit" name="action" value="join" class="join-button">Join</button>--%>
-<%--    </form>--%>
-
-</div>
+    <div class="links">
+        <a href="https://github.com/Badyusha/QueueWebApp">
+            <img src="${pageContext.request.contextPath}/images/github.png" alt="GitHub">
+        </a>
+    </div>
 
 </body>
 </html>

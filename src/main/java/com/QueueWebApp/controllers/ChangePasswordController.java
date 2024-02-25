@@ -1,21 +1,17 @@
 package com.QueueWebApp.controllers;
 
-import com.QueueWebApp.bll.services.ChangePasswordService;
-import com.QueueWebApp.bll.services.EncryptionService;
-import com.QueueWebApp.bll.services.SessionService;
-import com.QueueWebApp.bll.services.SignUpService;
-import com.QueueWebApp.dal.database.DatabaseService;
+import com.QueueWebApp.services.ChangePasswordService;
+import com.QueueWebApp.services.EncryptionService;
+import com.QueueWebApp.services.SessionService;
+import com.QueueWebApp.services.SignUpService;
+import com.QueueWebApp.database.DatabaseService;
 import com.QueueWebApp.models.User;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.HashMap;
 
 @Controller
 public class ChangePasswordController {

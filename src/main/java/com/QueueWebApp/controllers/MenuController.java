@@ -1,10 +1,8 @@
 package com.QueueWebApp.controllers;
 
-import com.QueueWebApp.bll.services.HomeService;
-import com.QueueWebApp.bll.services.SessionService;
+import com.QueueWebApp.services.SessionService;
 import com.QueueWebApp.models.User;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,12 +1,9 @@
-package com.QueueWebApp.bll.services;
+package com.QueueWebApp.services;
 
 import com.QueueWebApp.models.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
-import oshi.util.tuples.Pair;
-
-import java.util.HashMap;
 
 @Service
 public class ChangePasswordService {

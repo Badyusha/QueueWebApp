@@ -1,7 +1,7 @@
-package com.QueueWebApp.bll.services;
+package com.QueueWebApp.services;
 
 
-import com.QueueWebApp.dal.database.DatabaseService;
+import com.QueueWebApp.database.DatabaseService;
 import com.QueueWebApp.models.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;

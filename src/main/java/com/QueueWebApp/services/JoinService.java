@@ -1,6 +1,6 @@
-package com.QueueWebApp.bll.services;
+package com.QueueWebApp.services;
 
-import com.QueueWebApp.dal.database.DatabaseService;
+import com.QueueWebApp.database.DatabaseService;
 import com.QueueWebApp.models.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

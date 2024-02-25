@@ -1,7 +1,7 @@
 package com.QueueWebApp.controllers;
 
-import com.QueueWebApp.bll.services.QueueService;
-import com.QueueWebApp.bll.services.SessionService;
+import com.QueueWebApp.services.QueueService;
+import com.QueueWebApp.services.SessionService;
 import com.QueueWebApp.models.Subject;
 import com.QueueWebApp.models.User;
 import jakarta.servlet.http.HttpServletRequest;

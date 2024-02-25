@@ -1,4 +1,4 @@
-package com.QueueWebApp.bll.services;
+package com.QueueWebApp.services;
 
 import com.QueueWebApp.models.Subject;
 import com.QueueWebApp.models.User;

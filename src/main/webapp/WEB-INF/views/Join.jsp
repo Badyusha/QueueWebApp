@@ -14,14 +14,14 @@
 
     <style>
         <%@include file="/WEB-INF/css/JoinStyle.css"%>
+        <%@include file="/WEB-INF/css/HeaderStyle.css"%>
+        <%@include file="/WEB-INF/css/LinksStyle.css"%>
     </style>
-
-    <script>
-        <%@include file="/WEB-INF/script/MovingMenuScript.js"%>
-    </script>
 
 </head>
 <body>
+
+<jsp:include page="Header.jsp" />
 
 <form method="post">
     <h1>Join</h1>
@@ -55,10 +55,10 @@
     </select><br><br>
 
     <label for="date">Date</label><br>
-    <input type="date" id="date" name="date"/><br><br>
+    <input type="date" id="date" name="date" class=""/>
 
     <button type="submit" id="join" name="action" value="join">Join</button>
-    <button id="cancel" onclick="location.href='/Home'; return false;">Cancel</button>
+    <button type="button" id="cancel" onclick="location.href='/Home'; return false;">Cancel</button>
 </form>
 
 <script>
@@ -80,7 +80,7 @@
     });
 </script>
 
-
+<jsp:include page="Links.jsp" />
 
 </body>
 </html>

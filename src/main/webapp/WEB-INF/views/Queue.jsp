@@ -34,7 +34,8 @@
     </h1>
     <p>
         <%
-            out.print(subject.getSubgroup() + " subgroup");
+            Integer subgroup = subject.getSubgroup();
+            out.print((subgroup.equals(0) ? "General" : subgroup) + " subgroup");
         %>
     </p>
     <p>

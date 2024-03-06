@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
 @Service
@@ -27,18 +28,14 @@ public class QueueService {
 	}
 
 	public List<User> GetFinalUsersQueueList(Subject subject) {
-		String curDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-		String subDate = subject.getDate().toString();
-		String curTime = new SimpleDateFormat("HH-mm").format(new Date());
+		LocalDate curDate = LocalDate.now();
+		LocalDate subjectDate = subject.getDate();
+		LocalTime curTime = LocalTime.now();
+		LocalTime finishedTimeRegistration = LocalTime.of(8, 30);
+
 		Long subjectId = subject.getId();
 
-		int currentDate = Integer.parseInt(curDate.replace("-", ""));
-		int subjectDate = Integer.parseInt(subDate.replace("-", ""));	
-		int currentTime = Integer.parseInt(curTime.replace("-", ""));
-
-		int finishedTimeRegistration = 1800;
-
-		if(currentDate > subjectDate) {
+		if(curDate.isAfter(subjectDate)) {
 			try {
 				usersQueueMap.remove(subject.getId());
 			}
@@ -48,7 +45,7 @@ public class QueueService {
 			return null;
 		}
 
-		if(currentDate != subjectDate || currentTime > finishedTimeRegistration) {
+		if(curDate.isBefore(subjectDate) || (curDate.isEqual(subjectDate) && curTime.isBefore(finishedTimeRegistration))) {
 			return null;
 		}
 

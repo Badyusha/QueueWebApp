@@ -10,20 +10,17 @@
     <title>Queue Page</title>
 
     <style>
+        <%@include file="/WEB-INF/css/HeaderStyle.css"%>
         <%@include file="/WEB-INF/css/QueueStyle.css"%>
-        <%@include file="/WEB-INF/css/MovingMenuStyle.css"%>
+        <%@include file="/WEB-INF/css/LinksStyle.css"%>
     </style>
-
-    <script>
-        <%@include file="/WEB-INF/script/MovingMenuScript.js"%>
-    </script>
 
 </head>
 <body>
 
-<jsp:include page="MovingMenuCode.jsp" />
+<jsp:include page="Header.jsp" />
 
-<div>
+<div style="text-align: center;">
     <h1>
         <%
             Subject subject = (Subject) session.getAttribute("subjectOfTheFinalUsersList");
@@ -73,6 +70,8 @@
         <%--    <li>1. dfgdgfgd ●</li>--%>
     </ul>
 </div>
+
+<jsp:include page="Links.jsp" />
 
 </body>
 </html>

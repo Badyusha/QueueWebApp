@@ -14,7 +14,6 @@
 
     <style>
         <%@include file="/WEB-INF/css/ProfileStyle.css"%>
-        <%@include file="/WEB-INF/css/MovingMenuStyle.css"%>
         <%@include file="/WEB-INF/css/HeaderStyle.css"%>
         <%@include file="/WEB-INF/css/LinksStyle.css"%>
     </style>
@@ -25,7 +24,7 @@
 
 </head>
 <body>
-    <div class="header"></div>
+    <jsp:include page="Header.jsp" />
 
     <div class="profile">
         <div class="label">Name</div>

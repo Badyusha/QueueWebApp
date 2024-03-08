@@ -22,7 +22,6 @@ public class ChangePasswordController {
 		this.databaseService = databaseService;
 	}
 
-
 	@GetMapping("/ChangePassword")
 	public String ChangePassword(HttpServletRequest request) {
 		request.getSession().setAttribute("error", null);
